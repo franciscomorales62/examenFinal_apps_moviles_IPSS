@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="user.name" name="name" required minlength="3
+      " #name="ngModel">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="name.invalid && name.touched">
+      <p>El nombre es obligatorio y debe tener al menos 3 caracteres.</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input [(ngModel)]="user.email" name="email" type="email" required email #email="ngModel">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="email.invalid && email.touched">
+      <p>Ingrese un correo válido.</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input [(ngModel)]="user.phone" name="phone" type="tel" required pattern="^[0-9]{10}$" #phone="ngModel">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="phone.invalid && phone.touched">
+      <p>El teléfono debe tener 10 dígitos.</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="user.password" name="password" type="password" required minlength="8" #password="ngModel">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="password.invalid && password.touched">
+      <p>La contraseña debe tener al menos 8 caracteres.</p>
+    </ion-text>
+
+    <ion-button expand="block" type="submit" color="primary" [disabled]="registerForm.invalid" (click)="registerUser()">
+      Registrarse
+    </ion-button>
+    <ion-button expand="block" color="success" (click)="inicio()">
+      Volver
+    </ion-button>
+  </form>
+</ion-content>
+
+

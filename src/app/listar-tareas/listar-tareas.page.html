@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="irACrearTarea()">Crear Tarea</ion-button> <!-- Botón para ir a crear tarea -->
+  <ion-button (click)="refreshTareas()" color="warning">Actualizar tareas</ion-button> <!-- Botón para actualizar -->
+  <ion-button (click)="cerrarSesion()" color="danger">Cerrar Sesión</ion-button> <!-- Botón para cerrar sesión -->
+
+  <ion-list>
+    <ion-item *ngFor="let task of tareas">
+      <ion-avatar slot="start">
+        <img [src]="task.image" *ngIf="task.image">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p><strong>Descripcion: </strong>{{ task.description }}</p>
+        <p><strong>Ubicación: </strong>{{ task.longitude }} , {{ task.latitude }}</p>
+        <p><strong>Estado: </strong>{{ task.completed ? 'Completado' : 'Pendiente' }}</p>
+      </ion-label>
+      <ion-button (click)="irAEditarTarea(task.id)">Editar</ion-button> <!-- Botón para editar tarea --> 
+      <ion-button color="danger" (click)="eliminarTarea(task.id)">Eliminar</ion-button> 
+      <!-- Botón para eliminar tarea -->
+      
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+
