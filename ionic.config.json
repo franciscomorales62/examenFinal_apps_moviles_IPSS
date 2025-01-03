@@ -1,7 +1,0 @@
-{
-  "name": "evaluacion_2",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}
